@@ -1,0 +1,38 @@
+data:
+  source: "finnhub"
+  api_key_env: "FINNHUB_API_KEY"
+  poll_interval_seconds: 5
+  symbols:
+    us500: "^GSPC"
+    usdjpy: "USDJPY"
+    vix: "^VIX"
+
+persistence:
+  base_threshold_seconds: 600
+  min_volume_shares: 1000
+  vix_adaptation: true
+
+sweep_detection:
+  impact_threshold: 0.25
+  volume_spike_multiplier: 3.0
+  window_seconds: 60
+
+filters:
+  min_vix: 12
+  max_vix: 35
+  min_correlation: 0.50
+
+trading:
+  session: "US_EU_OVERLAP"
+  risk_per_trade: 0.005
+  target_r_multiple: 1.5
+  stop_base: 0.0035
+  dynamic_stop: true
+  min_confidence: 0.65
+
+output:
+  terminal_alerts: true
+  audio_beep: false
+  log_file: "logs/tpd_signals.log"
+  log_level: "INFO"
+  colors: true
