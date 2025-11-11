@@ -48,8 +48,14 @@ class TPDApp:
             if int(time.time()) % 300 == 0:
                 self.logger.log('INFO', f"System running - Last price: {us500['c']:.2f}")
 
+        except KeyError as e:
+            import traceback
+            self.logger.log('ERROR', f"Data key error: {str(e)}")
+            self.logger.log('ERROR', f"Traceback: {traceback.format_exc()}")
         except Exception as e:
+            import traceback
             self.logger.log('ERROR', f"Job error: {str(e)}")
+            self.logger.log('ERROR', f"Traceback: {traceback.format_exc()}")
 
     def run(self):
         """Start the scheduler"""
