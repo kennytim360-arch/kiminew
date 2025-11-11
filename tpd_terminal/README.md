@@ -10,6 +10,28 @@ Topological Persistence Divergence signal generator for manual CFD trading. Runs
 - Terminal alerts with color coding
 - Log file for performance tracking
 
+## Important: Free Tier Limitations
+
+**Finnhub Free Tier Constraints:**
+- ✅ Quote data (price, high, low, open, previous close) - Available
+- ❌ Historical candle/OHLC data - Requires paid tier
+- ❌ Real-time volume data - Requires paid tier
+- ❌ Index symbols (SPX, VIX) - Limited availability
+
+**Workarounds Implemented:**
+1. **Volume Simulation**: Synthetic volume calculated from price volatility
+2. **Symbol Proxies**:
+   - US500: Uses `SPY` ETF (or `AAPL` as fallback)
+   - USDJPY: Uses `USDJPY=X` (or synthetic data)
+   - VIX: Uses `VIXY` ETF (or synthetic data)
+
+**For Production Use:**
+Consider upgrading to Finnhub paid tier ($60/month) for:
+- Real volume data
+- True index symbols (SPX, VIX)
+- Forex pairs (USDJPY)
+- Lower latency
+
 ## Installation
 
 ### 1. Get API Key
